@@ -25,6 +25,7 @@ angular.module("internationalPhoneNumber", [])
   require: '^ngModel'
   scope:
     ngModel: '='
+    country: '=country'
 
   link: (scope, element, attrs, ctrl) ->
 
@@ -37,6 +38,7 @@ angular.module("internationalPhoneNumber", [])
 
 
     read = () ->
+      scope.country = element.intlTelInput("getSelectedCountryData").name
       ctrl.$setViewValue element.val()
 
     handleWhatsSupposedToBeAnArray = (value) ->
